@@ -10,6 +10,7 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
+      - sleep 50m
       - apt-get update -y
       - apt-get install -y maven
     finally:
