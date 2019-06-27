@@ -22,7 +22,7 @@ steps:
     goals: 'package'
 - bash: sleep 60
   displayName: "Use More Time"
-  name: use-more-time
+  name: use_more_time
   workingDirectory: .
   failOnStderr: false
   continueOnError: true
