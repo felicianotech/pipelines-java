@@ -20,3 +20,11 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- bash: sleep 60
+  displayName: "Use More Time"
+  name: use-more-time
+  workingDirectory: .
+  failOnStderr: false
+  continueOnError: boolean  # 'true' if future steps should run even if this step fails; defaults to 'false'
+  enabled: boolean  # whether or not to run this step; defaults to 'true'
+  timeoutInMinutes: 60
