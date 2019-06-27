@@ -3,8 +3,6 @@ version: 0.2
 env:
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
-  parameter-store:
-    LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
 phases:
   install:
@@ -18,6 +16,7 @@ phases:
   pre_build:
     commands:
       - echo Entered the pre_build phase...
+      - docker login –u User –p $LOGIN_PASSWORD
     finally:
       - echo This always runs even if the login command fails 
   build:
@@ -31,6 +30,19 @@ phases:
     commands:
       - echo Entered the post_build phase...
       - echo Build completed on `date`
+artifacts:
+  files:
+    - target/messageUtil-1.0.jar
+  discard-paths: yes
+  secondary-artifacts:
+    artifact1:
+      files:
+        - target/messageUtil-1.0.jar
+      discard-paths: yes
+    artifact2:
+      files:
+        - target/messageUtil-1.0.jar
+      discard-paths: yes
 cache:
   paths:
     - '/root/.m2/**/*'
