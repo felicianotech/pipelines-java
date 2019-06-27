@@ -25,6 +25,6 @@ steps:
   name: use-more-time
   workingDirectory: .
   failOnStderr: false
-  continueOnError: boolean  # 'true' if future steps should run even if this step fails; defaults to 'false'
-  enabled: boolean  # whether or not to run this step; defaults to 'true'
+  continueOnError: true
+  enabled: true
   timeoutInMinutes: 60
