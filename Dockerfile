@@ -5,6 +5,7 @@ FROM ubuntu:bionic
 
 # Install packages needed for CGO
 RUN apt-get update && apt-get install -y --no-install-recommends \
+		curl \
 		g++ \
 		libc6-dev \
 	&& rm -rf /var/lib/apt/lists/*
