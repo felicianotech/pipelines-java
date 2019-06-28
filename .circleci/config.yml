@@ -9,13 +9,19 @@ workflows:
             branches:
               only: master
     jobs:
-      - build
+      - buildCron
   main:
     jobs:
-      - build
+      - buildSingle
 
 jobs:
-  build:
+  buildSingle:
+    docker:
+      - image: docker:stable-git
+    steps:
+      - checkout
+      - run: echo "Hi"
+  buildCron:
     docker:
       - image: docker:stable-git
     steps:
@@ -24,4 +30,10 @@ jobs:
           docker_layer_caching: true
       - run:
           name: "Make sure Dockerfile Builds"
-          command: docker build -t test/testing:dev .
+          command: |
+            echo $DATE >> fake-log.txt
+            git config user.name "Ricardo"
+            git config user.email "FelicianoTech@gmail.com"
+            git add fake-log.txt
+            git commit -m "Add to fake log."
+            git push
