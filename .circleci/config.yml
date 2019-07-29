@@ -1,15 +1,15 @@
 version: 2.1
 
 workflows:
-  hourly-build:
-    triggers:
-      - schedule:
-          cron: "0 * * * *"
-          filters:
-            branches:
-              only: master
-    jobs:
-      - buildCron
+  #hourly-build:
+  #  triggers:
+  #    - schedule:
+  #        cron: "0 * * * *"
+  #        filters:
+  #          branches:
+  #            only: master
+  #  jobs:
+  #    - buildCron
   main:
     jobs:
       - buildSingle
